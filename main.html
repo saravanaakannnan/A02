@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>User login/logout</title>
+</head>
+<style>
+table, tr,td,th {
+  border: 1px solid black;
+	autowidth : true;
+}
+</style>
+<body align = "center">
+<form>
+<fieldset align = "center">
+{% if user %}
+<h1> Anagram Engine </h1>
+<p>Hello {{ user.email() }} welcome to the application</p>
+<div class="tab" id="menu" title="Anagram Engine">
+<a href ="/add">Add Anagram </a></br></br>
+<a href = "/uniqueanagram">Unique Anagram </a></br></br>
+<a href = "/listofwords">Anagram List</a>
+</div>
+<form method="get" action="/">
+<div>
+</br></br>Search your content here...</br>
+  Word:<input type="text" name="word_text"/><br/>
+  <input type="submit" name="submit" value="search"/>
+</div>
+</form><table align = "center"><tr><td>
+{% for y in anagram_list.words %}{{ y }}<br/>{% endfor %}
+{% for i in a %}{% for b in i.words %}{{b}}</br>{% endfor %}{% endfor %}
+</td></tr></table>
+<b><p><a href='/'>Home</a></p></b>
+{% else %}
+<p><i>Hello Guest welcome to the Anagram application</p>
+{% endif %}
+
+<p>you can click <a href='{{ url }}'>{{ url_string }} </a>here</p>
+</fieldset>
+</form>
+</body>
+</html>
